@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.hardware.limelightvision.LLResult;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 
-@TeleOp(name="new main ", group="Linear Opmode")
+@TeleOp(name="new main ", group="Linear Opmode") //this comment was added to update notes on github x3
 public class limelightPID extends LinearOpMode {
 
     // ===== HARDWARE DECLARATION =====
