@@ -4,7 +4,6 @@ import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.hardware.limelightvision.LLResult;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
@@ -27,10 +26,8 @@ public class gptquickstart1 extends LinearOpMode {
         DcMotor backLeft = hardwareMap.get(DcMotor.class, "backLeft");
         DcMotor frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         DcMotor backRight = hardwareMap.get(DcMotor.class, "backRight");
-        DcMotor Intake = hardwareMap.get(DcMotor.class, "Intake");
-        DcMotor flyWheelLeft = hardwareMap.get(DcMotor.class, "flyWheelLeft");
-        DcMotor flyWheelRight = hardwareMap.get(DcMotor.class, "flyWheelRight");
-        Servo flyWheelServo = hardwareMap.get(Servo.class, "flyWheelServo");
+        DcMotor Intake = hardwareMap.get(DcMotor.class, "intake");
+        DcMotor flyWheelLeft = hardwareMap.get(DcMotor.class, "flyWheel");
         limelight = hardwareMap.get(Limelight3A.class, "limelight");
         // --- Motor Directions ---
         frontLeft.setDirection(DcMotor.Direction.REVERSE);   // chain driven
@@ -38,17 +35,15 @@ public class gptquickstart1 extends LinearOpMode {
         backLeft.setDirection(DcMotor.Direction.REVERSE);    // direct drive
         backRight.setDirection(DcMotor.Direction.FORWARD);   // direct drive
 
-        Intake.setDirection(DcMotor.Direction.FORWARD);
-        flyWheelRight.setDirection(DcMotor.Direction.FORWARD);
-        flyWheelLeft.setDirection(DcMotor.Direction.REVERSE);
+        intake.setDirection(DcMotor.Direction.FORWARD);
+        flyWheel.setDirection(DcMotor.Direction.FORWARD);
 
         // --- Run without encoders ---
-        DcMotor[] motors = {frontLeft, backLeft, frontRight, backRight, Intake, flyWheelLeft, flyWheelRight};
+        DcMotor[] motors = {frontLeft, backLeft, frontRight, backRight, intake, flyWheel};
         for (DcMotor m : motors) {
             m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         }
 
-        flyWheelServo.setPosition(0.49);
         waitForStart();
 
         telemetry.addData("Status", "Initialized");
